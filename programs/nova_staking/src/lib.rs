@@ -161,4 +161,18 @@ pub mod nova_staking {
     pub fn fund_treasury(ctx: Context<FundTreasury>, amount: u64) -> Result<()> {
         instructions::fund_treasury::handler(ctx, amount)
     }
+
+    /// Admin function to transfer authority to a new address.
+    ///
+    /// # Arguments
+    /// * `ctx` - The context containing admin accounts
+    /// * `new_authority` - New admin pubkey
+    ///
+    /// # Errors
+    /// Returns an error if:
+    /// - Caller is not the current admin
+    /// - New authority is zero address
+    pub fn transfer_authority(ctx: Context<AdminControl>, new_authority: Pubkey) -> Result<()> {
+        instructions::admin::transfer_authority_handler(ctx, new_authority)
+    }
 }
