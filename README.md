@@ -24,6 +24,37 @@ This is a Solana staking program built with the Anchor framework. It allows user
 - **Admin Controls**: Pool admin can pause staking and adjust APY rates
 - **Safe Math**: All calculations use overflow-protected arithmetic
 
+## Scripts
+
+### Stake Status Script
+
+Check staking status for any user on devnet:
+
+```bash
+# Check your own stake status
+yarn stake-status --mint <NOVA_MINT_PUBKEY>
+
+# Check another user's stake status
+yarn stake-status --mint <NOVA_MINT_PUBKEY> --user <USER_PUBKEY>
+
+# Using ts-node directly
+npx ts-node scripts/stake-status.ts --mint <MINT> --user <USER>
+```
+
+**Output includes:**
+- Staked amount
+- Staking tier (Flex/Core/Prime)
+- Stake start time
+- Lock end time (if applicable)
+- Estimated accrued rewards
+- Last claim time
+
+**Wallet Configuration:**
+- Set `SOLANA_WALLET` environment variable to path of keypair JSON
+- Or uses default: `~/.config/solana/id.json`
+
+⚠️ **No private keys are stored in the repo** - the script reads from your local keypair file.
+
 ## Program Structure
 
 ```
