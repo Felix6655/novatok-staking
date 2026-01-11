@@ -45,6 +45,52 @@ programs/nova_staking/src/
     └── fund_treasury.rs      # Fund reward treasury
 ```
 
+## Test Suite
+
+Comprehensive Anchor test suite located in `/tests/`:
+
+```
+tests/
+├── nova-staking.ts     # Main test suite
+└── utils.ts            # Test utilities
+```
+
+### Test Coverage
+
+1. **Initialize Pool** - Admin-only pool creation, verify stored admin pubkey
+2. **PDA Creation** - Vault and treasury PDA token accounts (SPL Token)
+3. **Staking All Tiers** - Flex, Core (90-day), Prime (180-day)
+4. **Vault Balance** - Verify balance increases on stake
+5. **User Stake State** - Verify amount, tier, start_ts, last_claim_ts
+6. **Claim Rewards** - Rewards > 0 after time, updates timestamps, double-claim yields ~0
+7. **Lock Enforcement** - Core/Prime cannot unstake before lock expires, Flex can unstake immediately
+8. **Unstake After Lock** - Vault decreases, user receives principal
+9. **Emission Cap** - Low cap blocks claims when exceeded
+10. **Pause/Unpause** - Paused pool blocks stake, unpause restores behavior
+
+### Running Tests
+
+```bash
+# Install dependencies
+yarn install
+
+# Start local validator
+solana-test-validator
+
+# Build and run tests
+anchor build
+anchor test --skip-local-validator
+
+# Or run all in one command (starts validator automatically)
+anchor test
+```
+
+### Test Constraints
+
+- **Integer Math Only**: No floating point operations
+- **Localnet**: Tests run against local Solana validator
+- **Deterministic**: All tests use deterministic values and seeds
+
 ## Instructions
 
 ### initialize
@@ -101,6 +147,12 @@ Deposits reward tokens into the treasury.
 ## Building
 
 ```bash
+# Install Rust and Solana prerequisites
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sh -c "$(curl -sSfL https://release.solana.com/v1.18.15/install)"
+cargo install --git https://github.com/coral-xyz/anchor avm --locked
+avm install latest && avm use latest
+
 # Build the program
 anchor build
 
@@ -108,11 +160,17 @@ anchor build
 anchor build --idl
 ```
 
-## Testing (Devnet)
+## Deployment (Devnet Only)
 
 ```bash
 # Configure for devnet
 solana config set --url devnet
+
+# Generate keypair
+solana-keygen new
+
+# Airdrop SOL for deployment
+solana airdrop 5
 
 # Deploy to devnet
 anchor deploy --provider.cluster devnet
@@ -142,6 +200,7 @@ Do NOT deploy to mainnet without:
 - `PRIME_LOCK_PERIOD`: 180 days (15,552,000 seconds)
 - `MAX_APY`: 5000 basis points (50%)
 - `BASIS_POINTS_DENOMINATOR`: 10,000
+- `SECONDS_PER_YEAR`: 31,536,000
 
 ## Error Codes
 
