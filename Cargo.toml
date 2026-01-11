@@ -1,0 +1,9 @@
+[workspace]
+members = [
+    "programs/nova_staking"
+]
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
+opt-level = 3
