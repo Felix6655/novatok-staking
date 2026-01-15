@@ -3,8 +3,6 @@
 //! This module defines all constant values used throughout the staking program,
 //! including time periods, APY limits, and precision values.
 
-use anchor_lang::prelude::*;
-
 /// Seed for deriving the stake pool PDA
 pub const STAKE_POOL_SEED: &[u8] = b"stake_pool";
 
