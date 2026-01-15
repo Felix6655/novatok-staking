@@ -137,3 +137,28 @@ impl StakePool {
         self.emission_cap.saturating_sub(self.total_distributed)
     }
 }
+
+impl Default for StakePool {
+    fn default() -> Self {
+        Self {
+            authority: Pubkey::default(),
+            staking_mint: Pubkey::default(),
+            staking_vault: Pubkey::default(),
+            treasury_vault: Pubkey::default(),
+            flex_apy: 0,
+            core_apy: 0,
+            prime_apy: 0,
+            emission_cap: 0,
+            total_distributed: 0,
+            total_staked: 0,
+            staker_count: 0,
+            paused: false,
+            created_at: 0,
+            last_updated: 0,
+            bump: 0,
+            vault_bump: 0,
+            treasury_bump: 0,
+            _reserved: [0u8; 64],
+        }
+    }
+}
