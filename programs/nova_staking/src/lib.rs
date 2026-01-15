@@ -18,7 +18,6 @@
 //! This program is configured for Solana devnet deployment only.
 
 use anchor_lang::prelude::*;
-use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
 
 declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
 
@@ -27,10 +26,7 @@ pub mod error;
 pub mod instructions;
 pub mod state;
 
-use constants::*;
-use error::StakingError;
 use instructions::*;
-use state::*;
 
 #[program]
 pub mod nova_staking {
