@@ -17,7 +17,6 @@ use anchor_lang::prelude::*;
 ///
 /// ## Account Size: 249 bytes (including 8-byte discriminator)
 #[account]
-#[derive(Default)]
 pub struct StakePool {
     /// The admin/authority that can modify pool settings.
     /// SECURITY: Only this pubkey can call admin functions.
