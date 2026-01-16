@@ -11,6 +11,7 @@
 
 2. **`Cargo.toml` (workspace root)**
    - Added `resolver = "2"` to fix Rust edition 2021 resolver warning
+   - **Added `[patch.crates-io]` to fix rustc 1.75 compatibility issue**
 
 3. **`programs/nova_staking/src/state/stake_pool.rs`**
    - Removed `#[derive(Default)]` (incompatible with `[u8; 64]` array)
@@ -21,6 +22,26 @@
 
 5. **`programs/nova_staking/src/constants.rs`**
    - Removed unused `use anchor_lang::prelude::*;` import
+
+### Solana SBF / rustc 1.75 Compatibility Fix
+
+6. **`Cargo.toml` - Patch Section** (CRITICAL)
+   ```toml
+   [patch.crates-io]
+   proc-macro-crate = { git = "https://github.com/bkchr/proc-macro-crate", tag = "v3.2.0" }
+   ```
+   
+   **Problem**: `toml_parser v1.0.6` requires rustc >= 1.76, but Solana SBF uses rustc 1.75.0-dev
+   
+   **Dependency chain**:
+   ```
+   borsh-derive v1.6.0 
+   └── proc-macro-crate v3.4.0 
+       └── toml_edit v0.23.10 
+           └── toml_parser v1.0.6 (MSRV 1.76!) ❌
+   ```
+   
+   **Solution**: Pin `proc-macro-crate` to v3.2.0 which uses `toml_edit ^0.22` (MSRV 1.65) ✅
 
 ### Configuration Changes
 
