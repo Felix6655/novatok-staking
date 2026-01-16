@@ -16,6 +16,6 @@ opt-level = 3
 # Dependency chain:
 #   borsh-derive v1.6.0 -> proc-macro-crate v3.4.0 -> toml_edit v0.23.10 -> toml_parser v1.0.6 (MSRV 1.76!)
 #
-# Solution: Pin toml_edit to v0.22.22 (MSRV 1.65) which doesn't use toml_parser
+# Solution: Pin proc-macro-crate to v3.2.0 which uses toml_edit ^0.22.20 (MSRV 1.65)
 [patch.crates-io]
-toml_edit = { git = "https://github.com/toml-rs/toml", tag = "v0.22.22" }
+proc-macro-crate = { git = "https://github.com/bkchr/proc-macro-crate", tag = "v3.2.0" }
