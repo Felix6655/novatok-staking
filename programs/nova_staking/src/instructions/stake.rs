@@ -1,3 +1,4 @@
+
 //! Stake instruction handler.
 //!
 //! Handles staking NOVA tokens into the pool with security validations.
@@ -29,7 +30,6 @@ pub struct Stake<'info> {
     /// The stake pool.
     /// SECURITY: PDA verification + has_one constraints
     #[account(
-        mut,
         seeds = [STAKE_POOL_SEED, stake_pool.staking_mint.as_ref()],
         bump = stake_pool.bump,
         has_one = staking_vault @ StakingError::VaultMismatch,

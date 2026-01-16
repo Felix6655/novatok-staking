@@ -1,3 +1,5 @@
+[toolchain]
+anchor_version = "0.29.0"
 [features]
 seeds = false
 skip-lint = false
@@ -15,7 +17,11 @@ nova_staking = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
 url = "https://api.apr.dev"
 
 [provider]
+<<<<<<< HEAD
 cluster = "devnet"
+=======
+cluster = "https://api.devnet.solana.com"
+>>>>>>> fce5ed1 (Fix Solana SBF rustc 1.75 compatibility (borsh + proc-macro-crate patches))
 wallet = "~/.config/solana/id.json"
 
 [scripts]

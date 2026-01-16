@@ -8,3 +8,4 @@ resolver = "2"
 overflow-checks = true
 lto = "fat"
 opt-level = 3
+

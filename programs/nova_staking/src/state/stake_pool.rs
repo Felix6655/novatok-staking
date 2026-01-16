@@ -1,4 +1,4 @@
-//! Stake Pool state structure.
+ke Pool state structure.
 //!
 //! The StakePool account stores global configuration for the staking program.
 //!
@@ -16,8 +16,11 @@ use anchor_lang::prelude::*;
 /// It stores APY rates, emission limits, and pool statistics.
 ///
 /// ## Account Size: 249 bytes (including 8-byte discriminator)
+<<<<<<< HEAD
 #[account]
 pub struct StakePool {
+=======
+>>>>>>> fce5ed1 (Fix Solana SBF rustc 1.75 compatibility (borsh + proc-macro-crate patches))
     /// The admin/authority that can modify pool settings.
     /// SECURITY: Only this pubkey can call admin functions.
     pub authority: Pubkey,
@@ -84,7 +87,7 @@ pub struct StakePool {
 
     /// Reserved space for future upgrades.
     pub _reserved: [u8; 64],
-}
+
 
 impl StakePool {
     /// Calculate the space needed for the StakePool account.
