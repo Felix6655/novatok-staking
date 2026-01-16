@@ -25,4 +25,3 @@ opt-level = 3
 [patch.crates-io]
 proc-macro-crate = { git = "https://github.com/bkchr/proc-macro-crate", tag = "v3.2.0" }
 borsh = { git = "https://github.com/near/borsh-rs", tag = "borsh-v1.5.5" }
-borsh-derive = { git = "https://github.com/near/borsh-rs", tag = "borsh-derive-v1.5.5" }
