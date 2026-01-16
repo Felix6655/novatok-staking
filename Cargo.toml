@@ -18,4 +18,4 @@ opt-level = 3
 #
 # Solution: Pin toml_edit to v0.22.22 (MSRV 1.65) which doesn't use toml_parser
 [patch.crates-io]
-toml_edit = { git = "https://github.com/toml-rs/toml", tag = "toml_edit-v0.22.22" }
+toml_edit = { git = "https://github.com/toml-rs/toml", tag = "v0.22.22" }
