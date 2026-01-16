@@ -12,6 +12,7 @@ opt-level = 3
 # Patches for Solana SBF compatibility (rustc 1.75.0)
 # The newer proc-macro-crate v3.x uses toml_edit v0.23+ which requires toml_parser v1.0.6+
 # toml_parser v1.0.6 requires rustc >= 1.76, but Solana SBF uses rustc 1.75.0-dev
-# Solution: Pin proc-macro-crate to v1.3.1 which uses toml_edit v0.19 (MSRV 1.66)
+# Solution: Pin borsh to v1.0.0 which uses proc-macro-crate ^1 (compatible with toml_edit v0.19)
 [patch.crates-io]
-proc-macro-crate = { git = "https://github.com/bkchr/proc-macro-crate", tag = "v1.3.1" }
+borsh = { git = "https://github.com/near/borsh-rs", tag = "borsh-v1.0.0" }
+borsh-derive = { git = "https://github.com/near/borsh-rs", tag = "borsh-v1.0.0" }
