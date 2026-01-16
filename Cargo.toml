@@ -14,4 +14,4 @@ opt-level = 3
 # toml_parser v1.0.6 requires rustc >= 1.76, but Solana SBF uses rustc 1.75.0-dev
 # Solution: Pin proc-macro-crate to v1.3.1 which uses toml_edit v0.19 (MSRV 1.66)
 [patch.crates-io]
-proc-macro-crate = { version = "=1.3.1" }
+proc-macro-crate = { git = "https://github.com/bkchr/proc-macro-crate", tag = "v1.3.1" }
