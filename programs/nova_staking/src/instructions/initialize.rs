@@ -1,11 +1,11 @@
-//! Initialize instruction handler.
-//!
-//! Creates and configures a new staking pool with security validations.
-//!
-//! ## Security Guarantees
-//! - Vault and treasury are PDAs owned by the stake pool
-//! - Mint address is locked to pool state permanently
-//! - All parameters validated before storage
+/// Initialize instruction handler.
+///
+/// Creates and configures a new staking pool with security validations.
+///
+/// ## Security Guarantees
+/// - Vault and treasury are PDAs owned by the stake pool
+/// - Mint address is locked to pool state permanently
+/// - All parameters validated before storage
 
 use anchor_lang::prelude::*;
 use anchor_spl::token::{Mint, Token, TokenAccount};

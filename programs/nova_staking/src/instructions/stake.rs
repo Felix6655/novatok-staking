@@ -1,12 +1,13 @@
+use crate::tier::Tier;
 
-//! Stake instruction handler.
-//!
-//! Handles staking NOVA tokens into the pool with security validations.
-//!
-//! ## Security Guarantees
-//! - Mint validation prevents wrong token staking
-//! - Vault validation ensures tokens go to correct PDA
-//! - All math uses checked operations
+/// Stake instruction handler.
+///
+/// Handles staking NOVA tokens into the pool with security validations.
+///
+/// ## Security Guarantees
+/// - Mint validation prevents wrong token staking
+/// - Vault validation ensures tokens go to correct PDA
+/// - All math uses checked operations
 
 use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
@@ -114,7 +115,7 @@ pub fn handler(ctx: Context<Stake>, amount: u64, tier: u8) -> Result<()> {
 
     // Validate tier is valid
     require!(
-        tier == tier::FLEX || tier == tier::CORE || tier == tier::PRIME,
+        tier == Tier::FLEX as u8 || tier == Tier::CORE as u8 || tier == Tier::PRIME as u8,
         StakingError::InvalidTier
     );
 

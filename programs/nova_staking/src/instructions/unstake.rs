@@ -1,11 +1,11 @@
-//! Unstake instruction handler.
-//!
-//! Handles withdrawing staked tokens from the pool with security validations.
-//!
-//! ## Security Guarantees
-//! - Lock period enforcement for Core/Prime tiers
-//! - Owner validation prevents unauthorized unstaking
-//! - Vault validation ensures tokens come from correct PDA
+/// Unstake instruction handler.
+///
+/// Handles withdrawing staked tokens from the pool with security validations.
+///
+/// ## Security Guarantees
+/// - Lock period enforcement for Core/Prime tiers
+/// - Owner validation prevents unauthorized unstaking
+/// - Vault validation ensures tokens come from correct PDA
 
 use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
@@ -120,7 +120,7 @@ pub fn handler(ctx: Context<Unstake>, amount: u64) -> Result<()> {
     // Check lock period for Core and Prime tiers
     // Flex tier (tier 0) has no lock period
     require!(
-        user_stake.is_lock_ended(clock.unix_timestamp),
+        user_stake.is_lock_ended(clock.unix_timestamp, 0),
         StakingError::LockPeriodNotEnded
     );
 

@@ -1,11 +1,11 @@
-//! Admin instruction handlers.
-//!
-//! Handles admin-only operations for the staking pool.
-//!
-//! ## Security Guarantees
-//! - All admin functions require signer == pool.authority
-//! - PDA validation ensures correct pool
-//! - Parameter bounds checking
+/// Admin instruction handlers.
+///
+/// Handles admin-only operations for the staking pool.
+///
+/// ## Security Guarantees
+/// - All admin functions require signer == pool.authority
+/// - PDA validation ensures correct pool
+/// - Parameter bounds checking
 
 use anchor_lang::prelude::*;
 

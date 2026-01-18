@@ -1,11 +1,11 @@
-//! Fund treasury instruction handler.
-//!
-//! Handles depositing reward tokens into the treasury.
-//!
-//! ## Security Guarantees
-//! - Treasury validation ensures correct PDA
-//! - Mint validation prevents wrong token deposits
-//! - Anyone can fund (no admin restriction)
+/// Fund treasury instruction handler.
+///
+/// Handles depositing reward tokens into the treasury.
+///
+/// ## Security Guarantees
+/// - Treasury validation ensures correct PDA
+/// - Mint validation prevents wrong token deposits
+/// - Anyone can fund (no admin restriction)
 
 use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};

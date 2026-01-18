@@ -1,11 +1,11 @@
-//! Claim rewards instruction handler.
-//!
-//! Handles claiming accumulated rewards without unstaking.
-//!
-//! ## Security Guarantees
-//! - Owner validation ensures only stake owner can claim
-//! - Treasury validation prevents fund theft
-//! - Emission cap enforcement prevents unlimited minting
+/// Claim rewards instruction handler.
+///
+/// Handles claiming accumulated rewards without unstaking.
+///
+/// ## Security Guarantees
+/// - Owner validation ensures only stake owner can claim
+/// - Treasury validation prevents fund theft
+/// - Emission cap enforcement prevents unlimited minting
 
 use anchor_lang::prelude::*;
 use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
