@@ -24,9 +24,9 @@ opt-level = 3
 #
 #   3. constant_time_eq v0.4.2 requires rustc >= 1.85 (edition 2024)
 #      Chain: solana-program -> blake3 v1.8.3 -> constant_time_eq v0.4.2
-#      Fix: Pin blake3 to v1.5.4 (uses constant_time_eq ^0.3, MSRV 1.66)
+#      Fix: Pin blake3 to v1.5.5 (uses constant_time_eq ^0.3.1, MSRV 1.66)
 #
 [patch.crates-io]
 proc-macro-crate = { git = "https://github.com/bkchr/proc-macro-crate", tag = "v3.2.0" }
 borsh = { git = "https://github.com/near/borsh-rs", tag = "borsh-v1.5.5" }
-blake3 = { git = "https://github.com/BLAKE3-team/BLAKE3", tag = "1.5.4" }
+blake3 = { git = "https://github.com/BLAKE3-team/BLAKE3", tag = "1.5.5" }
