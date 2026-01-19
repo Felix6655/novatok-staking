@@ -1,0 +1,22 @@
+# Rust toolchain configuration for Nova Staking
+# ==============================================
+# This pins the Rust version for compatibility with Solana SBF toolchain.
+#
+# Solana 1.18.x uses rustc 1.75.0-dev internally for SBF compilation.
+# However, the host toolchain needs to be compatible with Anchor 0.29.0
+# and should support generating a valid Cargo.lock.
+#
+# IMPORTANT: The actual SBF compilation uses Solana's bundled SBF toolchain,
+# not this host toolchain. This toolchain is used for:
+# - Running `cargo update` to generate Cargo.lock
+# - Running `anchor build` which orchestrates the SBF build
+# - Running tests
+#
+# Compatible toolchain: 1.79.0 (tested with Anchor 0.29.0 + Solana 1.18.x)
+# 
+# If you encounter edition2024 errors, ensure the patches in Cargo.toml
+# are correctly pinning blake3 to v1.5.5 (not v1.8.3+).
+
+[toolchain]
+channel = "1.79.0"
+components = ["rustfmt", "clippy"]
