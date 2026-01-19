@@ -128,6 +128,12 @@ The `Cargo.lock` is committed to ensure reproducible builds. If you need to rege
 ```bash
 rm Cargo.lock
 cargo update
+
+# Pin versions for rustc 1.79 compatibility
+cargo update -p rayon --precise 1.8.1
+cargo update -p rayon-core --precise 1.12.1
+cargo update -p indexmap --precise 2.6.0
+
 # Verify no MSRV errors
 cargo tree -p blake3    # Should show v1.5.5
 cargo tree -p borsh     # Should show v1.5.5 for borsh v1.x
