@@ -9,15 +9,9 @@ overflow-checks = true
 lto = "fat"
 opt-level = 3
 
-
 [patch.crates-io]
 proc-macro-crate = { git = "https://github.com/bkchr/proc-macro-crate", tag = "v3.2.0" }
 borsh = { git = "https://github.com/near/borsh-rs", tag = "borsh-v1.5.5" }
-
-# pin constant_time_eq to 0.3.1 commit (pre-edition2024)
-constant_time_eq = { git = "https://github.com/cesarb/constant_time_eq", rev = "bea93a33b656dee32f1ed871ea1eedcf47977bb2" }
-
-# keep your pre-edition2024 zeroize patch
+constant_time_eq = "=0.3.1"
 zeroize = { git = "https://github.com/RustCrypto/utils", rev = "d5f8c3a" }
-
 
